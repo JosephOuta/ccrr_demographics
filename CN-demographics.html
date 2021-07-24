@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugins/jspsych-survey-likert.js"></script>
+    <link rel="stylesheet" href="jspsych/css/jspsych.css">
+  </head>
+  <body></body>
+  <script>
+
+  var scale = ["Strongly Disagree", "Disagree", "Moderately Disagree", "Neutral", "Moderately Agree", "Agree", "Strongly Agree"];
+
+  var CN_identity_local = {
+      type: 'survey-likert',
+      questions: [
+        {prompt: "保持与中华文化的密切联系对我来说很重要", labels: scale, required: true}, 
+        {prompt: "中华文化对于我的影响非常正面", labels: scale, required: true},
+        {prompt: "我为作为一名华夏子女感到骄傲", labels: scale, required: true},
+        {prompt: "庆祝中国传统节日对我来说很重要", labels: scale, required: true}
+
+      ],
+  };
+
+  var CN_identity_global = {
+      type: 'survey-likert',
+      questions: [
+        {prompt: "我对国际事件有很强的参与感", labels: scale, required: true}, 
+        {prompt: "我对国际社会有强烈的归属感", labels: scale, required: true},
+        {prompt: "我认为自己是世界的公民", labels: scale, required: true},
+        {prompt: "感觉自己是国际社会的一部分对我来说非常重要", labels: scale, required: true}, 
+        {prompt: "当我思考我的身份时，我视自己为一名全世界的公民", labels: scale, required: true},
+        {prompt: "感觉自己是国际社会的一名公民对我而言很重要.", labels: scale, required: true},
+        {prompt: "我会形容自己为一名世界公民", labels: scale, required: true}
+      ],
+  };
+
+  var CN_consumption_global = {
+      type: 'survey-likert',
+      questions: [
+        {prompt: "我喜欢接触其他的生活方式", labels: scale, required: true}, 
+        {prompt: "我喜欢与其他国家的人接触并了解他们的观点与方式方法", labels: scale, required: true},
+        {prompt: "我喜欢观察其他国家的人，看看有没有可以从他们身上学习的东西", labels: scale, required: true},
+        {prompt: "我喜欢与其他文化、其他国家的人交流意见想法", labels: scale, required: true},
+        {prompt: "我想更进一步了解在其他国家生活的人.", labels: scale, required: true}, 
+ 
+        {prompt: "其他国家品牌的广告看起来比中国当地品牌的广告要多", labels: scale, required: true}, 
+        {prompt: "当我在阅读报纸时，会看到很多外国品牌的广告", labels: scale, required: true},
+        {prompt: "当我看电视时，我经常看到进口产品的广告", labels: scale, required: true}
+      ],
+  };
+
+  var CN_consumption_local = {
+      type: 'survey-likert',
+      questions: [
+        {prompt: "我读的新闻都是中文的", labels: scale, required: true}, 
+        {prompt: "我读的书都是中文的", labels: scale, required: true},
+        {prompt: "我读的杂志都是中文的", labels: scale, required: true},
+        {prompt: "我喜欢的大部分电视节目都是中文的", labels: scale, required: true},
+        {prompt: "相比起任何其他我会说的语言，我更喜欢中文的电视节目", labels: scale, required: true}
+      ],
+  };
+
+  jsPsych.init({
+    timeline: [US_identity_local, US_identity_global, US_consumption_global, US_consumption_local],
+    on_finish: function() { jsPsych.data.displayData(); }
+  });
+
+
+  </script>
+</html>

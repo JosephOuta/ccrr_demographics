@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugins/jspsych-survey-likert.js"></script>
+    <link rel="stylesheet" href="jspsych/css/jspsych.css">
+  </head>
+  <body></body>
+  <script>
+
+  var scale = ["Strongly Disagree", "Disagree", "Moderately Disagree", "Neutral", "Moderately Agree", "Agree", "Strongly Agree"];
+
+  var US_identity_local = {
+      type: 'survey-likert',
+      preamble: '<p> Please express your agreement with each of the following statements on a seven-point scale where 1 = strongly disagree and 7 = strongly agree with a given statement: </p>',
+      questions: [
+        {prompt: "It is very important for me to remain close to the American culture", labels: scale, required: true}, 
+        {prompt: "The American culture has the most positive impact on my life", labels: scale, required: true},
+        {prompt: "I feel very proud to identify with the American culture", labels: scale, required: true},
+        {prompt: "Participating in American holidays and events is very important to me", labels: scale, required: true}
+
+      ],
+  };
+
+  var US_identity_global = {
+      type: 'survey-likert',
+      questions: [
+        {prompt: "I have a strong attachment to the global world", labels: scale, required: true}, 
+        {prompt: "I feel connected to the global world", labels: scale, required: true},
+        {prompt: "I think of myself as a global citizen", labels: scale, required: true},
+        {prompt: "It is important to me to feel a part of the global world", labels: scale, required: true},
+        {prompt: "Thinking about my identity, I view myself as a global citize", labels: scale, required: true}, 
+        {prompt: "Feeling like a citizen of the world is important to me", labels: scale, required: true},
+        {prompt: "I think of myself as a global citizen", labels: scale, required: true},
+        {prompt: "I would describe myself as a global citizen", labels: scale, required: true}
+      ],
+  };
+
+  var US_consumption_global = {
+      type: 'survey-likert',
+      questions: [
+        {prompt: "I like to learn about other ways of life", labels: scale, required: true}, 
+        {prompt: "I enjoy being with people from other countries to learn about their views and approaches", labels: scale, required: true},
+        {prompt: "I like to observe people of other cultures, to see what I can learn from them", labels: scale, required: true},
+        {prompt: "I enjoy exchanging ideas with people from other cultures or countries", labels: scale, required: true},
+        {prompt: "I am interested in learning more about people who live in other countries", labels: scale, required: true},
+
+        {prompt: "It seems that the number of TV ads for foreign brands is higher than the number of TV ads for local brands", labels: scale, required: true}, 
+        {prompt: "When I read a newspaper, I come across many advertisements for foreign products", labels: scale, required: true},
+        {prompt: "When I am watching TV, I often see advertising for products that are from outside of my country", labels: scale, required: true}
+      ],
+  };
+
+  var US_consumption_local = {
+      type: 'survey-likert',
+      questions: [
+        {prompt: "The newspapers that I read are always in Chinese", labels: scale, required: true}, 
+        {prompt: "Most of the books that I read are in Chinese", labels: scale, required: true},
+        {prompt: "The magazines that I read are always in Chinese", labels: scale, required: true},
+        {prompt: "Most of my favorite shows on TV are in Chinese", labels: scale, required: true},
+        {prompt: "I prefer to watch Chinese-language TV over any other language I may speak", labels: scale, required: true}
+      ],
+  };
+
+  jsPsych.init({
+    timeline: [US_identity_local, US_identity_global, US_consumption_global, US_consumption_local],
+    on_finish: function() { jsPsych.data.displayData(); }
+  });
+
+
+  </script>
+</html>
